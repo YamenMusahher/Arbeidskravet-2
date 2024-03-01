@@ -41,5 +41,13 @@
     </div>
 </div>
 
+<!-- Legger til JS kode for å snakke med knappene Ja/Nei,-->
+<script>
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    const scoreElement = document.querySelector('.score');
+    let score = parseInt(scoreElement.innerText.split(': ')[1]);
+    
+</script>
 </body>
 </html>

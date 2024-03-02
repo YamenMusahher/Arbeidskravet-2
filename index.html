@@ -58,6 +58,17 @@ const notInterestedButton = document.querySelector('.not-interested-btn');
             console.log('Laster ny profil som samsvarer med filteret: ' + currentFilter);
             // Implementer funksjonalitet for å hente og vise ny profil her
         }
+        // Event listener for ikke-interessert knappen
+        notInterestedButton.addEventListener('click', function() {
+            loadNewProfile();
+        });
+
+        // Event listeners for filterknappene
+        filterButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                currentFilter = btn.textContent; // Oppdaterer gjeldende filter basert på knappen som ble trykket
+            });
+        });
         
     document.addEventListener('keydown', function(event) {
         const key = event.key;

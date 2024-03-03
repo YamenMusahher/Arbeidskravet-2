@@ -45,6 +45,12 @@
 
 <script>
 
+    document.addEventListener('DOMContentLoaded', function() {});   
+        const notInterestedButton = document.querySelector('.not-interested-btn');
+        const interestedButton = document.querySelector('.interested-btn');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        let currentFilter = 'Alle'; // Starter med en standardfilter
+
 
     document.addEventListener('keydown', function(event) {
         const key = event.key;

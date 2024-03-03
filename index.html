@@ -51,6 +51,16 @@
         const filterButtons = document.querySelectorAll('.filter-btn');
         let currentFilter = 'Alle'; // Starter med en standardfilter
 
+        // Funksjon for å laste inn en ny profil
+        function loadNewProfile() {
+            console.log('Laster ny profil som samsvarer med filteret: ' + currentFilter);
+           
+        }
+        // Event listener for ikke-interessert knappen
+        notInterestedButton.addEventListener('click', function() {
+            loadNewProfile();
+        });
+
 
     document.addEventListener('keydown', function(event) {
         const key = event.key;

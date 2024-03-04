@@ -44,43 +44,26 @@
 
 <script>
 
-     //henter inn API her , Vlad
+function fetchRandomProfile(gender) {
+    let url = 'https://randomuser.me/api/';
+    if (gender) {
+        url += `?gender=${gender}`;
+    }
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const profile = {
+                name: `${data.results[0].name.first} ${data.results[0].name.last}`,
+                location: `${data.results[0].location.city}, ${data.results[0].location.country}`,
+                age: data.results[0].dob.age,
+                gender: data.results[0].gender,
+                image: data.results[0].picture.large 
+            };
+            displayProfile(profile);
+        });
+}
 
-    //async function fetchProfileMembers() {
-     //   const response = await fetch ("https://randomuser.me/api/");
-      //  const getAllProfileMembers = await response.json();
-
-   // }
-   // fetchProfileMembers();
-
-        let datingProfiles;
-
-            async function getAllProfileMembers() {
-            const profileRequest = await fetch("https://www.boredapi.com/api/activity");
-            let result = await datingProfilesRequest.json();
-            return result;
-            }
-
-            async function initializeDatingProfiles(){
-                    datingProfiles = await getAllProfileMembers();
-                }
-                function getAllProfileMembers()  {
-                    datingProfiles.forEach((member) => {
-                        const memberCard = document.createElement("div");
-                        memberCard.innerHTML = 
-                        `<img src="${member.picture}" style="width: 100px"/>
-                        ${staffMember.name}`
-                        memberContainer.append(memberCard);
-                      })}
-                
-            
-        
-
-            
-
-
-   
-
+fetchRandomProfile();
 
     //Legger til JS kode for å snakke med knappene Ja/Nei med venstre og høyre piltast + trekke poeng med -1, Vlad//
     document.addEventListener('keydown', function(event) {

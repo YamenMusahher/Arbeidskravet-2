@@ -66,6 +66,11 @@
         }
            
             fetchRandomProfile();
+            
+            document.getElementById('filter-women').addEventListener('click', function () {
+            currentGenderFilter = 'female';
+            fetchRandomProfile('female');
+        });
 
     document.addEventListener('DOMContentLoaded', function() {});   
         const notInterestedButton = document.querySelector('.not-interested-btn');

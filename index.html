@@ -42,30 +42,7 @@
     let likedProfiles = [];
     let currentGenderFilter = '';
 
-    document.addEventListener('DOMContentLoaded', function() {});   
-        const notInterestedButton = document.querySelector('.not-interested-btn');
-        const interestedButton = document.querySelector('.interested-btn');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        let currentFilter = 'Alle'; // S
-
-        // Funksjon for å laste inn en ny profil
-        function loadNewProfile() {
-            console.log('Laster ny profil som samsvarer med filteret: ' + currentFilter);
-           
-        }
-        // Event listener for ikke-interessert knappen
-        notInterestedButton.addEventListener('click', function() {
-            loadNewProfile();
-        });
-        // Event listeners for filterknappene
-        filterButtons.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                currentFilter = btn.textContent; 
-            });
-        });
-
-
-        // legger til en oppdatert versjon her siden min branch ikke snakket med main lengre-eller brukerfeil.
+     // legger til en oppdatert versjon her siden min branch ikke snakket med main lengre-eller brukerfeil.
         //funskjon for fetch- Vlad
 
         function fetchRandomProfile(gender) {
@@ -89,6 +66,35 @@
         }
            
             fetchRandomProfile();
+
+    document.addEventListener('DOMContentLoaded', function() {});   
+        const notInterestedButton = document.querySelector('.not-interested-btn');
+        const interestedButton = document.querySelector('.interested-btn');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        let currentFilter = 'Alle'; // S
+
+        // Funksjon for å laste inn en ny profil
+        function loadNewProfile() {
+            console.log('Laster ny profil som samsvarer med filteret: ' + currentFilter);
+           
+        }
+        
+
+
+
+        // Event listener for ikke-interessert knappen
+        notInterestedButton.addEventListener('click', function() {
+            loadNewProfile();
+        });
+        // Event listeners for filterknappene
+        filterButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                currentFilter = btn.textContent; 
+            });
+        });
+
+
+       
 
 
     document.addEventListener('keydown', function(event) {

@@ -44,53 +44,8 @@
 
 <script>
 
-function fetchRandomProfile(gender) {
-    let url = 'https://randomuser.me/api/';
-    if (gender) {
-        url += `?gender=${gender}`;
-    }
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const profile = {
-                name: `${data.results[0].name.first} ${data.results[0].name.last}`,
-                location: `${data.results[0].location.city}, ${data.results[0].location.country}`,
-                age: data.results[0].dob.age,
-                gender: data.results[0].gender,
-                image: data.results[0].picture.large 
-            };
-            displayProfile(profile);
-        });
-}
 
-fetchRandomProfile();
-
-    //Legger til JS kode for å snakke med knappene Ja/Nei med venstre og høyre piltast + trekke poeng med -1, Vlad//
-    document.addEventListener('keydown', function(event) {
-        const key = event.key;
-        const scoreElement = document.querySelector('.score');
-        let score = parseInt(scoreElement.innerText.split(': ')[1]);
-        
-        if (key === 'ArrowLeft') {
-            event.preventDefault(); 
-            document.querySelector('.not-interested-btn').classList.add('highlight');
-            document.querySelector('.interested-btn').classList.remove('highlight');
-            
-            
-            score -= 1;
-        } else if (key === 'ArrowRight') {
-            event.preventDefault(); 
-            document.querySelector('.interested-btn').classList.add('highlight');
-            document.querySelector('.not-interested-btn').classList.remove('highlight');
-            
-           
-            score -= 1;
-        }
-        
-        scoreElement.innerText = 'Score: ' + score;
-        
-    });
-    
+ 
     
     </script>
 </body>

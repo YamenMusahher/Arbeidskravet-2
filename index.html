@@ -40,14 +40,15 @@
 
 
 let score = 10;
-    let likedProfiles = [];
-    let currentGenderFilter = '';
-
-    function fetchRandomProfile(gender) {
+        let likedProfiles = [];
+        let currentGenderFilter = '';
+ 
+        function fetchRandomProfile(gender) {
             let url = 'https://randomuser.me/api/';
             if (gender) {
                 url += `?gender=${gender}`;
             }
+           
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
@@ -56,20 +57,24 @@ let score = 10;
                         location: `${data.results[0].location.city}, ${data.results[0].location.country}`,
                         age: data.results[0].dob.age,
                         gender: data.results[0].gender,
-                        image: data.results[0].picture.large 
+                        image: data.results[0].picture.large
                     };
                     displayProfile(profile);
                 });
         }
-        fetchRandomProfile();
+           
+            fetchRandomProfile();
+ 
         function displayProfile(profile, isLikedProfile) {
             document.getElementById('profile-name').innerText = profile.name;
             document.getElementById('profile-age').innerText = profile.age + "years";
-            document.getElementById('profile-location').innerText = profile.location
+            document.getElementById('profile-location').innerText = profile.location;
             document.getElementById('profile-image').src = profile.image;
             document.getElementById('profile-card').classList.remove('male-profile', 'female-profile');
             document.getElementById('profile-card').classList.add(profile.gender === 'male' ? 'male-profile' : 'female-profile');
-
+ 
+ 
+ 
             if (isLikedProfile) {
                 const likedList = document.getElementById('liked-list');
                 const li = document.createElement('li');
@@ -86,20 +91,27 @@ let score = 10;
                 likedList.appendChild(li);
             }
         }
-        {}
-
+       
+       
         function promptForMorePoints() {
             let answer = '';
             while (answer.toLowerCase() !== 'yes') {
                 answer = prompt('Do you want to swipe more? Yes/No');
                 if (answer.toLowerCase() === 'no') {
-                    continue;
-                } else if (answer.toLowerCase() === 'yes') {
-
-                }   }   }
-                
-    //vlad 
-  document.addEventListener('keydown', function (event) {
+                    continue;              
+                } else if (answer.toLowerCase() === 'yes') {        
+                    score += 10;
+                    document.getElementById('score').innerText = score;
+                    likedProfiles = [];
+               
+                     
+                    break;
+                }
+            }
+        }
+ 
+       
+        document.addEventListener('keydown', function (event) {
             if (event.key === 'ArrowRight') {
                 if (score <= 0) {
                     promptForMorePoints();
@@ -126,12 +138,9 @@ let score = 10;
                 fetchRandomProfile(currentGenderFilter);
             }
         });
-
+ 
        
-    
-       //lagre likte profiler vlad//
-
-           document.addEventListener('click', function (event) {
+        document.addEventListener('click', function (event) {
             if (event.target.classList.contains('delete-profile')) {
                 const profileCard = event.target.closest('.liked-profile-card');
                 const profileIndex = Array.from(profileCard.parentNode.children).indexOf(profileCard);
@@ -143,8 +152,8 @@ let score = 10;
                 document.getElementById('score').innerText = score;
             }
         });
+ 
        
-        //likerklikk funksjon  vlad//
         document.addEventListener('click', function (event) {
             if (event.target.classList.contains('edit-profile')) {
                 const profileCard = event.target.closest('.liked-profile-card');

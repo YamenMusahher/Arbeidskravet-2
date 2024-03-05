@@ -85,13 +85,16 @@ z`  <!DOCTYPE html>
             }
         }
         {}
-        
+
         //Definerer en funksjon som spør brukeren om de vil sveipe mer
         function promptForMorePoints() {
-            // Initialiserer variabelen for svaret fra brukeren
             let answer = '';
+            // Løkke som kjører så lenge brukeren ikke svarer 'yes'
+            while (answer.toLowerCase() !== 'yes') {
+                // Spør brukeren om de vil sveipe mer, og lagrer svaret
+                answer = prompt('Do you want to swipe more? Yes/No');
 
-            }
+            }   }
 </script>
     
 </body>

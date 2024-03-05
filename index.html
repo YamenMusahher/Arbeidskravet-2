@@ -172,6 +172,20 @@ let score = 10;
                 }
             }
         });
+        document.getElementById('filter-women').addEventListener('click', function () {
+            currentGenderFilter = 'female';
+            fetchRandomProfile('female');
+        });
+
+        document.getElementById('filter-men').addEventListener('click', function () {
+            currentGenderFilter = 'male';
+            fetchRandomProfile('male');
+        });
+
+        document.getElementById('filter-both').addEventListener('click', function () {
+            currentGenderFilter = '';
+            fetchRandomProfile();
+        });
 
 </script>
 

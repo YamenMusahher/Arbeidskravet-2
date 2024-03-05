@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+z`  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,6 +66,35 @@
         }
            
             fetchRandomProfile();
+            function displayProfile(profile, isLikedProfile) {};
+            document.getElementById('profile-name').innerText = profile.name;
+            document.getElementById('profile-age').innerText = profile.age + "years";
+            document.getElementById('profile-location').innerText = profile.location;
+            document.getElementById('profile-image').src = profile.image;
+            document.getElementById('profile-card').classList.remove('male-profile', 'female-profile');
+            document.getElementById('profile-card').classList.add(profile.gender === 'male' ? 'male-profile' : 'female-profile');
+ 
+            if (isLikedProfile) {
+                const likedList = document.getElementById('liked-list');
+                const li = document.createElement('li');
+                li.innerHTML = `
+            <div class="liked-profile-card">
+                <img src="${profile.image}" alt="Profile Image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+                <span>${profile.name}</span>
+                <span>${profile.age}</span>
+                <span>${profile.location}</span>
+                <button class="delete-profile">Delete</button>
+                <button class="edit-profile">Edit</button>
+            </div>
+        `;
+                likedList.appendChild(li);
+            }
+        {}
+            
+            document.getElementById('filter-women').addEventListener('click', function () {
+            currentGenderFilter = 'female';
+            fetchRandomProfile('female');
+        });
 
     document.addEventListener('DOMContentLoaded', function() {});   
         const notInterestedButton = document.querySelector('.not-interested-btn');

@@ -37,49 +37,8 @@ z`  <!DOCTYPE html>
 </div>
 
 
-
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-
-
-
-
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-<h1>test push igjen</h1>
-
-
-<h2>hei</h2>
-
 <script>
-    document.addEventListener('keydown', function(event) {
-        const key = event.key;
-        const scoreElement = document.querySelector('.score');
-        let score = parseInt(scoreElement.innerText.split(': ')[1]);
-        
-        if (key === 'ArrowLeft') {
-            event.preventDefault(); 
-            document.querySelector('.not-interested-btn').classList.add('highlight');
-            document.querySelector('.interested-btn').classList.remove('highlight');
-            
-            
-            score -= 1;
-        } else if (key === 'ArrowRight') {
-            event.preventDefault(); 
-            document.querySelector('.interested-btn').classList.add('highlight');
-            document.querySelector('.not-interested-btn').classList.remove('highlight');
-            
-           
-            score -= 1;
-        }
-        
-        scoreElement.innerText = 'Score: ' + score;
-    });
+  
     </script>
     
 </body>

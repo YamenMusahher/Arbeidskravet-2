@@ -86,16 +86,12 @@ z`  <!DOCTYPE html>
         }
         {}
 
-        //Definerer en funksjon som spør brukeren om de vil sveipe mer
         function promptForMorePoints() {
             let answer = '';
-            // Løkke som kjører så lenge brukeren ikke svarer 'yes'
             while (answer.toLowerCase() !== 'yes') {
                 answer = prompt('Do you want to swipe more? Yes/No');
-                // Hvis brukeren svarer 'no', går til neste iterasjon av løkke
                 if (answer.toLowerCase() === 'no') {
                     continue;
-                // Hvis brukeren svarer 'yes', utfør følgende
                 } else if (answer.toLowerCase() === 'yes') {
 
                 }   }   }

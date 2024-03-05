@@ -35,6 +35,40 @@ z`  <!DOCTYPE html>
     </div>
     
 </div>
+
+
+
+<script>
+  document.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowRight') {
+                if (score <= 0) {
+                    promptForMorePoints();
+                } else {
+                    if (likedProfiles.length < 10) {
+                        likedProfiles.push({
+                            name: document.getElementById('profile-name').innerText,
+                            age: document.getElementById('profile-age').innerText,
+                            location: document.getElementById('profile-location').innerText,
+                            image: document.getElementById('profile-image').src
+                        });
+                        displayProfile(likedProfiles[likedProfiles.length - 1], true);
+                        localStorage.setItem('likedProfiles', JSON.stringify(likedProfiles));
+                        score--;
+                        document.getElementById('score').innerText = score;
+                    } else {
+                       
+                        promptForMorePoints();
+                    }
+                    fetchRandomProfile(currentGenderFilter);
+                }
+            }
+            else if (event.key === 'ArrowLeft') {
+                fetchRandomProfile(currentGenderFilter);
+            }
+        });
+                    
+    </script>
+=======
 <p>Test</p>
 <script>
     let score = 10;
@@ -96,6 +130,7 @@ z`  <!DOCTYPE html>
 
                 }   }   }
 </script>
+
     
 </body>
 </html>

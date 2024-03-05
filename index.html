@@ -66,6 +66,11 @@ z`  <!DOCTYPE html>
             }
         });
 
+       
+       
+       
+       
+       
         //likerklikk funksjon //
         document.addEventListener('click', function (event) {
             if (event.target.classList.contains('edit-profile')) {
@@ -74,6 +79,19 @@ z`  <!DOCTYPE html>
                 const newName = prompt('Enter new name:');
                 const newAge = prompt('Enter new age:');
                 const newLocation = prompt('Enter new location:');
+                if (newName && newAge && newLocation) {
+                    likedProfiles[profileIndex].name = newName;
+                    likedProfiles[profileIndex].age = newAge;
+                    likedProfiles[profileIndex].location = newLocation;
+                    localStorage.setItem('likedProfiles', JSON.stringify(likedProfiles));
+                    profileCard.querySelector('span').textContent = newName;
+                    profileCard.querySelectorAll('span')[1].textContent = newAge + "years";
+                    profileCard.querySelectorAll('span')[2].textContent = newLocation;
+                }
+            }
+        });
+
+
 
     </script>
     

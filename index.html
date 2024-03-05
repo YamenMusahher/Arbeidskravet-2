@@ -74,7 +74,22 @@ z`  <!DOCTYPE html>
             document.getElementById('profile-card').classList.remove('male-profile', 'female-profile');
             document.getElementById('profile-card').classList.add(profile.gender === 'male' ? 'male-profile' : 'female-profile');
  
-
+            if (isLikedProfile) {
+                const likedList = document.getElementById('liked-list');
+                const li = document.createElement('li');
+                li.innerHTML = `
+            <div class="liked-profile-card">
+                <img src="${profile.image}" alt="Profile Image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
+                <span>${profile.name}</span>
+                <span>${profile.age}</span>
+                <span>${profile.location}</span>
+                <button class="delete-profile">Delete</button>
+                <button class="edit-profile">Edit</button>
+            </div>
+        `;
+                likedList.appendChild(li);
+            }
+        {}
             
             document.getElementById('filter-women').addEventListener('click', function () {
             currentGenderFilter = 'female';

@@ -35,8 +35,31 @@ z`  <!DOCTYPE html>
     </div>
     
 </div>
-
+<p>Test</p>
 <script>
+    let score = 10;
+    let likedProfiles = [];
+    let currentGenderFilter = '';
+
+    function fetchRandomProfile(gender) {
+            let url = 'https://randomuser.me/api/';
+            if (gender) {
+                url += `?gender=${gender}`;
+            }
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const profile = {
+                        name: `${data.results[0].name.first} ${data.results[0].name.last}`,
+                        location: `${data.results[0].location.city}, ${data.results[0].location.country}`,
+                        age: data.results[0].dob.age,
+                        gender: data.results[0].gender,
+                        image: data.results[0].picture.large 
+                    };
+                    displayProfile(profile);
+                });
+        }
+        fetchRandomProfile();
 </script>
     
 </body>

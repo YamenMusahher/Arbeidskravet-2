@@ -40,6 +40,13 @@ z`  <!DOCTYPE html>
     let score = 10;
     let likedProfiles = [];
     let currentGenderFilter = '';
+
+    function fetchRandomProfile(gender) {
+            let url = 'https://randomuser.me/api/';
+            if (gender) {
+                url += `?gender=${gender}`;
+            }
+        }
 </script>
     
 </body>

@@ -38,7 +38,20 @@ z`  <!DOCTYPE html>
 
 
 <script>
-  
+  document.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowRight') {
+                if (score <= 0) {
+                    promptForMorePoints();
+                } else {
+                    if (likedProfiles.length < 10) {
+                        likedProfiles.push({
+                            name: document.getElementById('profile-name').innerText,
+                            age: document.getElementById('profile-age').innerText,
+                            location: document.getElementById('profile-location').innerText,
+                            image: document.getElementById('profile-image').src
+                        });
+                        
+                    
     </script>
     
 </body>

@@ -50,7 +50,21 @@ z`  <!DOCTYPE html>
                             location: document.getElementById('profile-location').innerText,
                             image: document.getElementById('profile-image').src
                         });
-                        
+                        displayProfile(likedProfiles[likedProfiles.length - 1], true);
+                        localStorage.setItem('likedProfiles', JSON.stringify(likedProfiles));
+                        score--;
+                        document.getElementById('score').innerText = score;
+                    } else {
+                       
+                        promptForMorePoints();
+                    }
+                    fetchRandomProfile(currentGenderFilter);
+                }
+            }
+            else if (event.key === 'ArrowLeft') {
+                fetchRandomProfile(currentGenderFilter);
+            }
+        });
                     
     </script>
     

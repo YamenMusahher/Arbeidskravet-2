@@ -60,6 +60,11 @@ z`  <!DOCTYPE html>
                 });
         }
         fetchRandomProfile();
+        function displayProfile(profile, isLikedProfile) {
+            document.getElementById('profile-name').innerText = profile.name;
+            document.getElementById('profile-age').innerText = profile.age + "years";
+            document.getElementById('profile-location').innerText = profile.location
+        }
 </script>
     
 </body>

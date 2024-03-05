@@ -65,7 +65,16 @@ z`  <!DOCTYPE html>
                 fetchRandomProfile(currentGenderFilter);
             }
         });
-                    
+
+        //likerklikk funksjon //
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('edit-profile')) {
+                const profileCard = event.target.closest('.liked-profile-card');
+                const profileIndex = Array.from(profileCard.parentNode.children).indexOf(profileCard);
+                const newName = prompt('Enter new name:');
+                const newAge = prompt('Enter new age:');
+                const newLocation = prompt('Enter new location:');
+
     </script>
     
 </body>

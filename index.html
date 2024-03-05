@@ -68,8 +68,20 @@ z`  <!DOCTYPE html>
 
        
        
-       
-       
+       //lagre likte profiler//
+
+           document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('delete-profile')) {
+                const profileCard = event.target.closest('.liked-profile-card');
+                const profileIndex = Array.from(profileCard.parentNode.children).indexOf(profileCard);
+                likedProfiles.splice(profileIndex, 1);
+                localStorage.setItem('likedProfiles', JSON.stringify(likedProfiles));
+                profileCard.parentNode.remove();
+ 
+                score++;
+                document.getElementById('score').innerText = score;
+            }
+        });
        
         //likerklikk funksjon //
         document.addEventListener('click', function (event) {

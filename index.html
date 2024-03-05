@@ -1,4 +1,4 @@
-z`  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,8 +64,46 @@ z`  <!DOCTYPE html>
                 fetchRandomProfile(currentGenderFilter);
             }
         });
+
+       
+    
+       //lagre likte profiler//
+
+           document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('delete-profile')) {
+                const profileCard = event.target.closest('.liked-profile-card');
+                const profileIndex = Array.from(profileCard.parentNode.children).indexOf(profileCard);
+                likedProfiles.splice(profileIndex, 1);
+                localStorage.setItem('likedProfiles', JSON.stringify(likedProfiles));
+                profileCard.parentNode.remove();
+ 
+                score++;
+                document.getElementById('score').innerText = score;
+            }
+        });
+       
+        //likerklikk funksjon //
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('edit-profile')) {
+                const profileCard = event.target.closest('.liked-profile-card');
+                const profileIndex = Array.from(profileCard.parentNode.children).indexOf(profileCard);
+                const newName = prompt('Enter new name:');
+                const newAge = prompt('Enter new age:');
+                const newLocation = prompt('Enter new location:');
+                if (newName && newAge && newLocation) {
+                    likedProfiles[profileIndex].name = newName;
+                    likedProfiles[profileIndex].age = newAge;
+                    likedProfiles[profileIndex].location = newLocation;
+                    localStorage.setItem('likedProfiles', JSON.stringify(likedProfiles));
+                    profileCard.querySelector('span').textContent = newName;
+                    profileCard.querySelectorAll('span')[1].textContent = newAge + "years";
+                    profileCard.querySelectorAll('span')[2].textContent = newLocation;
+                }
+            }
+        });
                     
     
+
     let score = 10;
     let likedProfiles = [];
     let currentGenderFilter = '';
@@ -109,7 +147,7 @@ z`  <!DOCTYPE html>
                 <button class="delete-profile">Delete</button>
                 <button class="edit-profile">Edit</button>
             </div>
-        `;
+        ;
                 likedList.appendChild(li);
             }
         }

@@ -100,6 +100,59 @@
 }
 
 
+
+// opprette og vise kort til brukerprofil til hund.-Hundehilsen og chat.
+function createCard1(user, dog) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    const userImage = document.createElement('img');
+    userImage.src = user.picture.large;
+    userImage.alt = 'User Image';
+    userImage.style.borderRadius = '50%';
+    userImage.style.width = '50px';
+    userImage.style.height = '50px';
+    card.appendChild(userImage);
+    const dogImage = document.createElement('img');
+    dogImage.src = dog;
+    dogImage.alt = 'Dog Image';
+    dogImage.style.borderRadius = '5px';
+    dogImage.style.width = '100%';
+    dogImage.style.height = '200px';
+    dogImage.style.backgroundSize = 'cover'
+    card.appendChild(dogImage);
+    const userProfile = document.createElement('div');
+    userProfile.innerHTML = `<p>Name: ${user.name.first} ${user.name.last}</p>
+                     <p>Location: ${user.location.city}, ${user.location.country}</p>`;
+    card.appendChild(userProfile);
+
+    const chatBtn = document.createElement('button');
+    chatBtn.textContent = 'Chat';
+    chatBtn.classList.add('chat-btn');
+    chatBtn.addEventListener('click', () => {
+        openChat(user.name.first);
+    });
+    card.appendChild(chatBtn);
+    let speechBubble = null;
+    dogImage.addEventListener('click', (event) => {
+        if (speechBubble) {
+            speechBubble.remove();
+            speechBubble = null;
+        } else {
+            const randomGreeting = getRandomGreeting();
+            speechBubble = document.createElement('div');
+            speechBubble.classList.add('speech-bubble');
+            speechBubble.textContent = randomGreeting;
+            speechBubble.style.position = 'absolute';
+            speechBubble.style.top = `${event.clientY}px`;
+            speechBubble.style.left = `${event.clientX + 100}px`;
+            document.body.appendChild(speechBubble);
+        }
+    });
+    container.appendChild(card);
+}
+
+
+
     </script>
   </body>
 </html>

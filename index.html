@@ -33,7 +33,33 @@
         border-radius: 30px;
     }
 
+    .filter-buttons {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+
+    #filter-women, #filter-men, #filter-both, #not-interested, #interested, .delete-profile, .edit-profile {
+        padding: 5px 20px;
+        margin: 5px;
+        border-radius: 25px;
+        background-color: rgb(226, 238, 169);
+    }
+
+    #filter-women:hover, #filter-men:hover, #filter-both:hover, .delete-profile:hover, .edit-profile:hover {
+        background-color: rgb(8, 168, 35);
+        color: white;
+    }
+
+    .liked-profiles {
+        margin: 20px;
+    }
+
+    .inter {
+        display: flex;
+    }
 </style>
+
 <body>
     <div class="container">
         <h2>Score: <span id="score">10</span></h2>

@@ -1,33 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DogApp</title>
-</head>
-<body>
-    <div class="main-title">
-        <button class="show-cards-btn">Show 10 new cards</button> 
-        <div>
-            <div class="filter-reset">
-                <h4 class="filter-btn">Select a Dog Breed:</h4>
-                <select id="breed-select" onchange="selectBreed()"></select>
-                <button class="reset" onclick="reset()">Reset</button> 
-            </div>
-            <div class="filter-select">
-                <p id="select">You selected:</p> 
-                <p id="selected-breed"></p>
-            </div>
-        </div>
-    </div>
-    
-    <div id="container" class="container"></div>
-<div class="chat-box" style="display: none;">
-    <p class="greeting">Greetings from the dog owner!</p>
-        <div class="messages"></div>
-        <input type="text" placeholder="Type a message...">
-        <button onclick="sendMessage()">Send</button>
-        <button onclick="closeChat()">Close</button>
-</div>
-</body>
+  </head>
+  <body>
+    <script>
+      // 1 //Legger til variabler for kodesnutter til hundeapp- Vlad
+      const container = document.querySelector(".container");
+      const chatBox = document.createElement("div");
+      chatBox.classList.add("chat-box");
+      let messages = [];
+      let filteredBreed = "";
+      let selectedBreeds = [];
+      var shouldExit = false;
+      var count = 0;
+
+      // fetching- mye av lignende funksjon fra forrige prosjekt-Vlad
+      function fetchData(url) {
+        return fetch(url)
+          .then((response) => response.json())
+          .catch((error) => console.log("Error fetching data:", error));
+      }
+      
+      function reset() {
+        document.getElementById("selected-breed").innerHTML = "";
+        shouldExit = false;
+        count = 0;
+      }
+
+      //Funksjon for å lage kort til hunder
+      function createCard(user, dog) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    // Profilbilde innhenting 
+    const userImage = document.createElement('img');
+    userImage.src = user.picture.large;
+    userImage.alt = 'User Image';
+    userImage.style.borderRadius = '50%';
+    userImage.style.width = '50px';
+    userImage.style.height = '50px';
+    card.appendChild(userImage);
+
+    // Lage profilbilde for hund
+    const dogImage = document.createElement('img');
+    dogImage.src = dog.message;
+    dogImage.alt = 'Dog Image';
+    dogImage.style.borderRadius = '5px';
+    dogImage.style.width = '100%';
+    dogImage.style.height = '200px';
+    dogImage.style.backgroundSize = 'cover';
+    card.appendChild(dogImage);
+
+    let speechBubble = null;
+    dogImage.addEventListener('click', (event) => {
+        if (speechBubble) {
+            speechBubble.remove(); 
+            speechBubble = null;
+        } else {
+            const randomGreeting = getRandomGreeting();
+            speechBubble = document.createElement('div');
+            speechBubble.classList.add('speech-bubble');
+            speechBubble.textContent = randomGreeting;
+            speechBubble.style.position = 'absolute';
+            speechBubble.style.top = `${event.clientY}px`;
+            speechBubble.style.left = `${event.clientX + 100}px`;
+            document.body.appendChild(speechBubble);
+        }
+    });
+
+    // Brukerprofil
+    const userProfile = document.createElement('div');
+    userProfile.innerHTML = `<p>Name: ${user.name.first} ${user.name.last}</p>
+                     <p>Location: ${user.location.city}, ${user.location.country}</p>`;
+    card.appendChild(userProfile);
+
+    // Sletteknapp for profil
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.addEventListener('click', () => {
+        card.remove();
+        replaceCard();
+    });
+    card.appendChild(deleteBtn);
+
+    // Knapp for chat funksjon
+    const chatBtn = document.createElement('button');
+    chatBtn.textContent = 'Chat';
+    chatBtn.classList.add('chat-btn');
+    chatBtn.addEventListener('click', () => {
+        openChat(user.name.first);
+    });
+    card.appendChild(chatBtn);
+
+    container.appendChild(card);
+}
+
+
+
+// opprette og vise kort til brukerprofil til hund.-Hundehilsen og chat.
+function createCard1(user, dog) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    const userImage = document.createElement('img');
+    userImage.src = user.picture.large;
+    userImage.alt = 'User Image';
+    userImage.style.borderRadius = '50%';
+    userImage.style.width = '50px';
+    userImage.style.height = '50px';
+    card.appendChild(userImage);
+    const dogImage = document.createElement('img');
+    dogImage.src = dog;
+    dogImage.alt = 'Dog Image';
+    dogImage.style.borderRadius = '5px';
+    dogImage.style.width = '100%';
+    dogImage.style.height = '200px';
+    dogImage.style.backgroundSize = 'cover'
+    card.appendChild(dogImage);
+    const userProfile = document.createElement('div');
+    userProfile.innerHTML = `<p>Name: ${user.name.first} ${user.name.last}</p>
+                     <p>Location: ${user.location.city}, ${user.location.country}</p>`;
+    card.appendChild(userProfile);
+
+    const chatBtn = document.createElement('button');
+    chatBtn.textContent = 'Chat';
+    chatBtn.classList.add('chat-btn');
+    chatBtn.addEventListener('click', () => {
+        openChat(user.name.first);
+    });
+    card.appendChild(chatBtn);
+    let speechBubble = null;
+    dogImage.addEventListener('click', (event) => {
+        if (speechBubble) {
+            speechBubble.remove();
+            speechBubble = null;
+        } else {
+            const randomGreeting = getRandomGreeting();
+            speechBubble = document.createElement('div');
+            speechBubble.classList.add('speech-bubble');
+            speechBubble.textContent = randomGreeting;
+            speechBubble.style.position = 'absolute';
+            speechBubble.style.top = `${event.clientY}px`;
+            speechBubble.style.left = `${event.clientX + 100}px`;
+            document.body.appendChild(speechBubble);
+        }
+    });
+    container.appendChild(card);
+}
+
+
+
+    </script>
+  </body>
 </html>

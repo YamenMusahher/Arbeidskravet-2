@@ -244,6 +244,17 @@
                          <button onclick="closeChat()">Close</button>`;
             document.body.appendChild(chatBox);
         }
+
+        function sendMessage() {
+            const input = chatBox.querySelector('input');
+            const message = input.value;
+            if (message.trim() !== '') {
+                messages.push(message);
+                displayMessages();
+                input.value = '';
+            }
+        }
+ 
         
     </script>
   </body>

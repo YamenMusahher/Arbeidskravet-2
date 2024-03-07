@@ -234,6 +234,16 @@
  
             })
         };
+
+        function openChat(ownerName) {
+            chatBox.style.display = 'block';
+            chatBox.innerHTML = `<p class="greeting">Greetings from ${ownerName}'s dog!</p>
+                         <div class="messages"></div>
+                         <input type="text" placeholder="Type a message...">
+                         <button onclick="sendMessage()">Send</button>
+                         <button onclick="closeChat()">Close</button>`;
+            document.body.appendChild(chatBox);
+        }
         
     </script>
   </body>

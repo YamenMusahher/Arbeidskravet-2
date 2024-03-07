@@ -175,6 +175,17 @@
         });
         container.appendChild(card);
       }
+      
+      function replaceCard() {
+            fetchData('https://randomuser.me/api/')
+                .then(data => {
+                    fetchData('https://dog.ceo/api/breeds/image/random')
+                        .then(dogData => {
+                            createCard(data.results[0], dogData);
+                        });
+                });
+        }
+        
     </script>
   </body>
 </html>

@@ -6,168 +6,168 @@
     <title>DogApp</title>
   </head>
 
-<style>
-        body
-        {
-            font-family: Arial, sans-serif;
-        }
- 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
- 
-        .card {
-            width: 250px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin: 10px;
-            padding: 10px;
-        }
- 
-        .card img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
- 
-        .chat-box {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background-color: #89e9a1;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-        }
- 
-        .chat-box .messages {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-bottom: 10px;
-        }
- 
-        .chat-box input {
-            width: 94%;
-            padding: 5px;
-            margin-top: 0px;
-            margin-bottom: 20px;
-        }
- 
-        .chat-box button,
-        .delete-btn,
-        .chat-btn {
-            padding: 5px 20px;
-            margin: 5px;
-            border-radius: 25px;
-            background-color: rgb(226, 238, 169);
-        }
- 
-        .chat-box button:hover,
-        .delete-btn:hover,
-        .chat-btn:hover {
-            background-color: rgb(195, 72, 240);
-            color: white;
-        }
- 
-        .show-cards-btn {
-            padding: 15px 40px;
-            margin: 25px 40px;
-            font-size: 20px;
-            font-weight: 600;
-            border-radius: 25px;
-            background-color: rgb(245, 245, 245);
-            width: fit-content;
-            height: fit-content;
-            color: rgb(195, 72, 240);
-        }
- 
-        .show-cards-btn:hover {
-            background-color: rgb(195, 72, 240);
-            color: rgb(255, 255, 255);
-            transition: 0.5s;
-        }
- 
-        .greeting {
-            font-size: 20px;
-            font-weight: bold;
-        }
- 
-        .filter-btn,
-        .reset {
-            padding: 10px 20px;
-            margin: 5px 15px;
-            border-radius: 25px;
-            background-color: rgb(255, 255, 255);
-            width: fit-content;
-            color: rgb(9, 0, 0);
-            font-size: 20px;
- 
-        }
- 
-        .reset:hover {
-            background-color: rgb(166, 45, 166);
-            color: rgb(255, 255, 255);
-            transition: 0.5s;
-        }
- 
-        .main-title {
-            display: flex;
-        }
- 
-        .show-cards-btn {
-            margin-right: 40px;
-        }
- 
-        #breed-select {
-            font-size: 20px;
-            padding: 10px 20px;
-        }
- 
-        #selected-breed {
-            font-size: 18px;
-            color: brown;
-            font-weight: 600;
-            margin: 0px 15px;
-        }
- 
-        .filter-select {
-            display: flex;
-            padding: 10px 20px;
-            border-radius: 15px;
-            background-color: rgb(237, 210, 250);
-            width: fit-content;
-            border-style: inset;
-            color: rgb(131, 38, 12);
-            margin-top: 10px;
-            margin-left: 40px;
-        }
- 
-        #select {
-            font-size: 18px;
-            color: rgb(0, 0, 0);
-            margin: 0px;
-        }
- 
-        .speech-bubble {
-            color: rgb(243, 57, 57);
-            font-size: 40px;
-            width: fit-content;
-            height: fit-content;
-            font-family: fantasy;
-            padding: 10px 20px;
-            font-weight: 600;
-            font-style: oblique;
-        }
- 
-        .filter-reset {
-            display: flex;
-            margin: 7px;
-        }
-    </style>
+  <style>
+    body
+    {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .card {
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .card img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .chat-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        background-color: #89e9a1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .chat-box .messages {
+        max-height: 200px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+    }
+
+    .chat-box input {
+        width: 94%;
+        padding: 5px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .chat-box button,
+    .delete-btn,
+    .chat-btn {
+        padding: 5px 20px;
+        margin: 5px;
+        border-radius: 25px;
+        background-color: rgb(226, 238, 169);
+    }
+
+    .chat-box button:hover,
+    .delete-btn:hover,
+    .chat-btn:hover {
+        background-color: rgb(195, 72, 240);
+        color: white;
+    }
+
+    .show-cards-btn {
+        padding: 15px 40px;
+        margin: 25px 40px;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 25px;
+        background-color: rgb(245, 245, 245);
+        width: fit-content;
+        height: fit-content;
+        color: rgb(195, 72, 240);
+    }
+
+    .show-cards-btn:hover {
+        background-color: rgb(195, 72, 240);
+        color: rgb(255, 255, 255);
+        transition: 0.5s;
+    }
+
+    .greeting {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .filter-btn,
+    .reset {
+        padding: 10px 20px;
+        margin: 5px 15px;
+        border-radius: 25px;
+        background-color: rgb(255, 255, 255);
+        width: fit-content;
+        color: rgb(9, 0, 0);
+        font-size: 20px;
+
+    }
+
+    .reset:hover {
+        background-color: rgb(166, 45, 166);
+        color: rgb(255, 255, 255);
+        transition: 0.5s;
+    }
+
+    .main-title {
+        display: flex;
+    }
+
+    .show-cards-btn {
+        margin-right: 40px;
+    }
+
+    #breed-select {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    #selected-breed {
+        font-size: 18px;
+        color: brown;
+        font-weight: 600;
+        margin: 0px 15px;
+    }
+
+    .filter-select {
+        display: flex;
+        padding: 10px 20px;
+        border-radius: 15px;
+        background-color: rgb(237, 210, 250);
+        width: fit-content;
+        border-style: inset;
+        color: rgb(131, 38, 12);
+        margin-top: 10px;
+        margin-left: 40px;
+    }
+
+    #select {
+        font-size: 18px;
+        color: rgb(0, 0, 0);
+        margin: 0px;
+    }
+
+    .speech-bubble {
+        color: rgb(243, 57, 57);
+        font-size: 40px;
+        width: fit-content;
+        height: fit-content;
+        font-family: fantasy;
+        padding: 10px 20px;
+        font-weight: 600;
+        font-style: oblique;
+    }
+
+    .filter-reset {
+        display: flex;
+        margin: 7px;
+    }
+</style>
   
   <body>
     <!--Klarte igjen å slette Ruslan sin kode ved å prøve fancy merge fra main til min branch- kom en konflikt som

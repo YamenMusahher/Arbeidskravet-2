@@ -263,6 +263,33 @@
                 </div>`;
             }).join('');
         }
+        function deleteMessage(index) {
+            messages.splice(index, 1);
+            displayMessages();
+        }
+        function closeChat() {
+            chatBox.innerHTML = '';
+            chatBox.style.display = 'none';
+        }
+        document.querySelector('.show-cards-btn').addEventListener('click', () => {
+            container.innerHTML = '';
+            for (let i = 0; i < 10; i++) {
+                replaceCard();
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            for (let i = 0; i < 10; i++) {
+                replaceCard();
+            }
+        });
+        const dogBreeds = ['Select', 'african', 'airedale', 'akita',  'dachshund',  'hound',  'labradoodle', 'poodle', 'pug', 'puggle', 'pyrenees'];
+        const breedSelect = document.getElementById("breed-select");
+        dogBreeds.forEach(breed => {
+            const option = document.createElement("option");
+            option.value = breed.toLowerCase().replace(/\s/g, "-");
+            option.textContent = breed;
+            breedSelect.appendChild(option);
+        });
  
         
     </script>

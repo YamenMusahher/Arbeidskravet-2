@@ -254,7 +254,15 @@
                 input.value = '';
             }
         }
-        
+        function displayMessages() {
+            const messagesDiv = chatBox.querySelector('.messages');
+            messagesDiv.innerHTML = messages.map((msg, index) => {
+                return `<div> 
+                    <p>${msg}</p> 
+                    <button onclick="deleteMessage(${index})">Delete</button> 
+                </div>`;
+            }).join('');
+        }
  
         
     </script>

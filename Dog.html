@@ -290,6 +290,29 @@
             option.textContent = breed;
             breedSelect.appendChild(option);
         });
+        function selectBreed() {
+            count = 0;
+            shouldExit = false;
+            const selectedBreed = breedSelect.value;
+            const selectedBreedElement = document.getElementById("selected-breed");
+            let currentSelection = selectedBreedElement.textContent;
+            let selectedBreeds = currentSelection.split(',').map(breed => breed.trim());
+            if (!selectedBreeds.includes(selectedBreed)) {
+                selectedBreeds.push(selectedBreed);
+                selectedBreedElement.textContent = selectedBreeds.join(', ').replace(/^, /, '');
+                const breedElements = selectedBreedElement.querySelectorAll('p');
+                breedElements.forEach(breedElement => {
+                    breedElement.addEventListener('click', function () {
+                        const clickedBreed = breedElement.textContent.trim();
+                        selectedBreeds = selectedBreeds.filter(breed => breed !== clickedBreed);
+                        selectedBreedElement.textContent = selectedBreeds.join(', ').replace(/^, /, '');
+                    });
+                });
+                replaceCard2(selectedBreeds);
+            } else {
+                alert("This dog breed is already selected.");
+            }
+        }
  
         
     </script>
